@@ -1,3 +1,23 @@
+#  IMPORTANT: Code below uses an ELEGOO mini-rmote I had.
+#  Adafruit code at the URL below can be used to find the
+#  precise key codes for most infrared remotes, and Adafruit sells a $5 NEC code model, too.
+#  https://learn.adafruit.com/infrared-ir-receive-transmit-circuit-playground-express-circuit-python?view=all#ir-test-with-remote
+#  More info in the README.md
+#  Adapted from several examples form Adafruit Industries, including:
+#  IR code from Remote Controlled IR Tree Ornament with CPX:
+#  https://learn.adafruit.com/remote-control-tree-ornament-with-circuit-playground-express/overview
+#  CircuitPython and DC Motors:
+#  https://learn.adafruit.com/adafruit-crickit-creative-robotic-interactive-construction-kit/circuitpython-dc-motors
+#  And robot assembly from:
+#  https://learn.adafruit.com/adabox002/assembling-your-robot
+#  I also glued a cool 3D printed Crickit mount from the Ruiz brothers:
+#  https://www.thingiverse.com/thing:2998716
+#  I'll post videos & more details when I get this working.
+#  Problem with current code or IR hardware is I get glitchy Repeated Code Errors or Memory Errors
+#  at random times when pressing buttons on my IR remote, however remote & code does work - sometimes requires
+#  more than one press to register (sometimes a few more).
+#  Know how to fix this? Suggestions welcome!
+
 from adafruit_crickit import crickit
 import pulseio
 import board
