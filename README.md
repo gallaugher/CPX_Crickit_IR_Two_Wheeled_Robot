@@ -14,7 +14,7 @@ Just use this code, then run on your CPX, point your IR remote at the CPX, and w
         Up
  left  Stop  right
        Down
-       
+
 They are listed on the remote (and in code.py) as:
        Vol +
 RWD    Play   FWD
