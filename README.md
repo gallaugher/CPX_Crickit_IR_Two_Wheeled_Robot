@@ -10,7 +10,7 @@ Elegoo Remote - I got this in a kit, but you should be able to use any infrared 
 NOTE: You'll likely have to identify your codes, but you can easily do this by following instructions at:
 https://learn.adafruit.com/infrared-ir-receive-transmit-circuit-playground-express-circuit-python?view=all#ir-test-with-remote
 
-Just use this code, then run on your CPX, point your IR remote at the CPX, and write down the 4 digit array that prints out for each character press. My remote uses five buttons in an configuration:
+Just use this code, then run on your CPX, point your IR remote at the CPX, and write down the 4 digit array that prints out for each character press. My remote uses five buttons in an configuration (click "Raw" above to format for layout):
         Up
  left  Stop  right
        Down
