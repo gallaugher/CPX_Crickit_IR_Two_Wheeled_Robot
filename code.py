@@ -13,10 +13,13 @@
 #  I also glued a cool 3D printed Crickit mount from the Ruiz brothers:
 #  https://www.thingiverse.com/thing:2998716
 #  I'll post videos & more details when I get this working.
-#  Problem with current code or IR hardware is I get glitchy Repeated Code Errors or Memory Errors
-#  at random times when pressing buttons on my IR remote, however remote & code does work - sometimes requires
-#  more than one press to register (sometimes a few more).
-#  Know how to fix this? Suggestions welcome!
+
+# This code works with Adafruit CircuitPlayground Express, Adafruit Crickit,
+# and was tested with adafruit-circuitpython-circuitplayground_express_crickit-3.1.1.uf2
+# and the adafruit lib files.
+# While previous versions seemed to have difficulty reading IR signals reliably,
+# an update to adafruit_irremote made in late Fall/early Winter 2018
+# corrected earlier problems w/o requiring modification to the code, below.
 
 from adafruit_crickit import crickit
 import pulseio
@@ -34,7 +37,7 @@ pulsein = pulseio.PulseIn(board.REMOTEIN, maxlen=120, idle_state=True)
 decoder = adafruit_irremote.GenericDecode()
 received_code = bytearray(4)
 last_command = None
-print("Blrop!")
+print("Everything configured & ready to run!")
 
 while True:
     red_led.value = False  # turn off red_led at D13
