@@ -1,31 +1,9 @@
-#  IMPORTANT: Code below uses an ELEGOO mini-rmote I had.
-#  Adafruit code at the URL below can be used to find the
-#  precise key codes for most infrared remotes, and Adafruit sells a $5 NEC code model, too.
-#  https://learn.adafruit.com/infrared-ir-receive-transmit-circuit-playground-express-circuit-python?view=all#ir-test-with-remote
-#  More info in the README.md
-#  Adapted from several examples form Adafruit Industries, including:
-#  IR code from Remote Controlled IR Tree Ornament with CPX:
-#  https://learn.adafruit.com/remote-control-tree-ornament-with-circuit-playground-express/overview
-#  CircuitPython and DC Motors:
-#  https://learn.adafruit.com/adafruit-crickit-creative-robotic-interactive-construction-kit/circuitpython-dc-motors
-#  And robot assembly from:
-#  https://learn.adafruit.com/adabox002/assembling-your-robot
-#  I also glued a cool 3D printed Crickit mount from the Ruiz brothers:
-#  https://www.thingiverse.com/thing:2998716
-#  I'll post videos & more details when I get this working.
-
-# This code works with Adafruit CircuitPlayground Express, Adafruit Crickit,
-# and was tested with adafruit-circuitpython-circuitplayground_express_crickit-3.1.1.uf2
-# and the adafruit lib files.
-# While previous versions seemed to have difficulty reading IR signals reliably,
-# an update to adafruit_irremote made in late Fall/early Winter 2018
-# corrected earlier problems w/o requiring modification to the code, below.
-
 from adafruit_crickit import crickit
 import pulseio
 import board
 import digitalio
 import adafruit_irremote
+import audioio
 
 motor_left = crickit.dc_motor_1
 motor_right = crickit.dc_motor_2
@@ -61,6 +39,12 @@ def get_IR_code():
     print("NEC Infrared code received: ", ir_code)
     return ir_code
 
+def play_sound(wavfile):
+    f = open(wavfile, "rb")
+    wav = audioio.WaveFile(f)
+    a = audioio.AudioOut(board.A0)
+    a.play(wav)
+
 while True:
     received_code = get_IR_code()
     if not received_code: # if no proper code received, restart while loop
@@ -78,6 +62,7 @@ while True:
         print("Stop!")  # Play
         motor_left.throttle = 0.0  # stop
         motor_right.throttle = 0.0
+        play_sound("rimshot.wav")
     elif received_code == [255, 0, 221, 34]:
         print("Turn Left!")  # RWD
         motor_left.throttle = 0.3  # left
